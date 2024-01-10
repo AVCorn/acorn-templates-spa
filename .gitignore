@@ -1,0 +1,6 @@
+.idea/
+.vscode/
+*.sublime-workspace
+
+*/.DS_Store
+.DS_Store
