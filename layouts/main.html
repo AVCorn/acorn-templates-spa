@@ -1,93 +1,89 @@
-<!DOCTYPE html>
-<html class="whatinput-types-initial whatinput-types-mouse" lang="en">
-    <head>
-        <!-- each page can override this -->
+<!DOCTYPE HTML>
+<html>
+	<head>
         <title>{% block title %}{{ info.title }}{% endblock %}</title>
 
         <meta name="author" content="WebElements.agency">
         <meta name="description" content="{% block description %}{% endblock %}">
         <meta name="keywords" content="{% block keywords %}{% endblock %}">
-        <meta name="generator" content="AVCorn">
 
-        <!-- base avcorn meta -->
+		<script src="/template/spa/assets/scripts/jquery.min.js"></script>
+
         {% include "components/head.html" %}
 
-        <!-- Layout Styles/Scripts Here -->
+		<link rel="stylesheet" href="/template/spa/assets/styles/main.css" />
+		<noscript><link rel="stylesheet" href="/template/spa/assets/styles/noscript.css" /></noscript>
 
-        <!-- use these as overrides for each individual page -->
         {% block styles %}{% endblock %}
         {% block scripts %}{% endblock %}
-    </head>
+	</head>
+	<body class="is-preload">
 
-    <body>
-        <!-- admin functionality injection (hidden) -->
-        {% include "components/admin.html" %}
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-        <header class="top">
-            <div class="top-bar">
-                <!-- company logo -->
-                <div class="logo">
-                    <a class="logo-link" href="/">
-                        <img class="logo-img" src="{{ info.logo }}" alt="{{ info.company }}" />
-                    </a>
-                </div>
+				<!-- Header -->
+					<header id="header" class="alt">
+						<a class="logo" href="{{ home }}{{ linkparams }}">
+                            <img class="logo-img" width="300px" height="300px" src="{{ info.logo }}" alt="{{ info.company }}" />
+                        </a>
+                        {% block header %}
+                            <h1 class="title editable">
+                                {{ info.title }}
+                            </h1>
+                        {% endblock %}
+					</header>
 
-                <!-- basic navigation -->
-                <nav class="navigation">
-                    <ul class="navigation-list menu">
-                        {% include "components/navigation.html" %}
-                    </ul>
-                </nav>
-            </div>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="/home/spa{{ linkparams }}">Home</a></li>
+                            {% include "components/navigation.html" %}
+						</ul>
+					</nav>
 
-            <div class="top-content">
-                <!-- content title overridden by each page -->
-                {% block header %}
-                    <h1 class="title editable">
-                        {{ info.title }}
-                    </h1>
-                {% endblock %}
-            </div>
-        </header>
+				<!-- Main -->
+					<div id="main">
+                        {% block content %}
+                            <div class="main-content editable"></div>
+                        {% endblock %}
+					</div>
 
-        <article class="main">
-            <!-- content overridden by each page -->
-            {% block content %}
-                <div class="main-content editable"></div>
-            {% endblock %}
-        </article>
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="editable">
+							<h2>Aliquam sed mauris</h2>
+							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
+							<ul class="actions">
+								<li><a href="/about{{ linkparams }}" class="button">Learn More</a></li>
+							</ul>
+						</section>
+						<section class="editable">
+							<h2>{{ info.company }}</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>{{ info.address }} &bull; {{ info.city }}, {{ info.state }} {{ info.zip }} &bull; USA</dd>
+								<dt>Phone</dt>
+								<dd>{{ info.phone }}</dd>
+								<dt>Email</dt>
+								<dd><a href="mailto:{{ info.email }}">{{ info.email }}</a></dd>
+							</dl>
+							<ul class="icons">
+								{% include "components/social.html" %}
+							</ul>
+						</section>
+						<p class="copyright">&copy; {{ info.copyright }}. {{ info.legal }}. Design: <a href="https://webelements.agency">Web Elements</a>.</p>
+					</footer>
 
-        <!-- a contact form -->
-        <div clas="contact">
-            {% include "components/contact.html" %}
-        </div>
+			</div>
 
-        <footer class="bottom">
-            <!-- footer overridden by each page -->
-            {% block footer %}
-                <div class="bottom-content editable"></div>
-            {% endblock %}
+			<script src="/template/spa/assets/scripts/jquery.scrollex.min.js"></script>
+			<script src="/template/spa/assets/scripts/jquery.scrolly.min.js"></script>
+			<script src="/template/spa/assets/scripts/browser.min.js"></script>
+			<script src="/template/spa/assets/scripts/breakpoints.min.js"></script>
+			<script src="/template/spa/assets/scripts/util.js"></script>
+			<script src="/template/spa/assets/scripts/main.js"></script>
 
-            <!-- social icons -->
-            <ul class="social">
-                {% include "components/social.html" %}
-            </ul>
-
-            <!-- basic navigation -->
-            <nav class="bottom-navigation">
-                <ul class="menu">
-                    {% include "components/navigation.html" %}
-                </ul>
-            </nav>
-
-            <!-- copyright info -->
-            <div class="copyright">
-                &copy; {{ info.copyright }} {{ "now"|date("Y") }} - {{ info.legal }}
-            </div>
-        </footer>
-
-        <!-- base avcorn post-load -->
-        {% include "components/foot.html" %}
-        {% block loaded %}{% endblock %}
-    </body>
+			{% block loaded %}{% endblock %}
+	</body>
 </html>

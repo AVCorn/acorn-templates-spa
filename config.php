@@ -21,11 +21,20 @@ declare(strict_types=1);
  *
  * @var array $config Configuration
  */
-$config['info']['company'] = "Bene's Brew House";
-$config['info']['title']   = 'Crazy Good Coffee';
-$config['info']['motto']   = 'Get your caffeinated fix!';
-$config['info']['slogan']  = 'Get your caffeinated fix!';
-$config['info']['logo']    = '/assets/images/logos/logo-coffeeshop.png';
-$config['home']            = '/home/coffeeshop';
+$config['info']['company'] = "Acorn Retreat";
+$config['info']['title']   = 'Spa & Wellness Center';
+$config['info']['motto']   = 'Spa & Wellness';
+$config['info']['slogan']  = 'Spa & Wellness';
+$config['info']['logo']    = '/assets/images/logos/logo-spa.png';
+$config['home']            = '/home/spa';
 
-$config['navigation'][0]['href'] = $config['home'];
+$config['navigation'] = [
+    [
+        'href'  => '/designs',
+        'label' => 'Designs',
+    ],
+    [
+        'href'  => '/contact',
+        'label' => 'Contact',
+    ],
+];
